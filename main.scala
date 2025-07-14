@@ -173,7 +173,7 @@ object SelectorPlayground extends IOApp.Simple {
             ),
             checkbox(
               "allowUnknownTraits",
-              "Include unknown traits",
+              "Allow unknown traits",
               Option.when(req.allowUnknownTraits)(checked),
             ),
             checkbox("showVariables", "Show variables", Option.when(req.showVariables)(checked)),
