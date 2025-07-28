@@ -6,6 +6,10 @@
 //> using dep software.amazon.smithy:smithy-model:1.60.3
 //> using option -Wunused:imports
 //> using option -Wunused:all
+//> using packaging.dockerFrom "eclipse-temurin:17.0.6_10-jre"
+//> using packaging.dockerImageTag "latest"
+//> using packaging.dockerImageRegistry "kubukoz"
+//> using packaging.dockerImageRepository "smithy-selector-playground"
 import cats.effect.*
 import cats.syntax.all.*
 import org.http4s.{h2 => _, *}
