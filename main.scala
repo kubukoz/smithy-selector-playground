@@ -14,6 +14,7 @@ import cats.effect.*
 import cats.syntax.all.*
 import org.http4s.{h2 => _, *}
 import org.http4s.dsl.io.*
+import com.comcast.ip4s.*
 import org.http4s.ember.server.*
 import org.http4s.implicits.*
 import org.http4s.scalatags.*
@@ -326,6 +327,8 @@ object SelectorPlayground extends IOApp.Simple {
   override def run: IO[Unit] =
     EmberServerBuilder
       .default[IO]
+      .withHost(host"0.0.0.0")
+      .withPort(port"8080")
       .withHttpApp(routes.orNotFound)
       .withErrorHandler { case e => IO.consoleForIO.printStackTrace(e) *> IO.raiseError(e) }
       .build
