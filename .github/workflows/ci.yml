@@ -62,7 +62,7 @@ jobs:
           scala-cli --power package --docker .
 
           export DOCKERHUB_ALIAS=kubukoz/smithy-selector-playground:latest
-          export FLY_ALIAS=registry.fly.io/smithy4s-codegen-ui:latest
+          export FLY_ALIAS=registry.fly.io/smithy-selector-playground:latest
 
           docker push "$DOCKERHUB_ALIAS"
           docker tag "$DOCKERHUB_ALIAS" "$FLY_ALIAS"
