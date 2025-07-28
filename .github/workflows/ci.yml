@@ -22,7 +22,7 @@ jobs:
           jvm: temurin:1.17
           apps: scala-cli
 
-      - run: scala-cli compile .
+      - run: scala-cli --power compile .
 
   deploy:
     name: Deploy app
