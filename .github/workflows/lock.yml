@@ -1,0 +1,16 @@
+name: Update lockfile
+
+on:
+  pull_request:
+
+jobs:
+  lock:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # needed to push the updated lockfile
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }} # check out the PR branch, not the merge commit
+
+      - uses: scala-nix/scala-cli-nix/.github/actions/lock@main
