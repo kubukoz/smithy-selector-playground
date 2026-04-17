@@ -1,7 +1,7 @@
 {
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs";
-    scala-cli-nix.url = "github:scala-nix/scala-cli-nix";
+    scala-cli-nix.url = "github:scala-nix/scala-cli-nix/lockfile-v3";
     scala-cli-nix.inputs.nixpkgs.follows = "nixpkgs";
   };
 

@@ -34,6 +34,7 @@ import scala.jdk.CollectionConverters.*
 import scala.jdk.OptionConverters.*
 import scala.util.chaining.*
 import scala.util.Using
+import scala.concurrent.duration.*
 import software.amazon.smithy.model.selector.Selector.StartingContext
 import software.amazon.smithy.model.neighbor.RelationshipType
 import software.amazon.smithy.model.loader.ModelAssembler
@@ -330,6 +331,7 @@ object SelectorPlayground extends IOApp.Simple {
       .withHost(host"0.0.0.0")
       .withPort(port"8080")
       .withHttpApp(routes.orNotFound)
+      .withShutdownTimeout(0.seconds)
       .withErrorHandler { case e => IO.consoleForIO.printStackTrace(e) *> IO.raiseError(e) }
       .build
       .evalTap(server => IO.println(s"Server running at ${server.baseUri}"))

@@ -1,8 +1,8 @@
 {
-  "version": 2,
+  "version": 3,
   "scalaVersion": "3.7.1",
   "mainClass": "SelectorPlayground",
-  "exportHash": "e7146c7a845f7187b9becdd21a8c2e9ecb00d077",
+  "exportHash": "26fd74723b2307d97932aa0b01c6ef86be8b4620",
   "sources": [
     "main.scala"
   ],
@@ -76,20 +76,12 @@
       "sha256": "e/pgVdAF4sj+Sm78aSrm79f1Q+OUD7VezKCdWMeMsP4="
     },
     {
-      "url": "https://repo1.maven.org/maven2/org/jline/jline-parent/3.29.0/jline-parent-3.29.0.pom",
-      "sha256": "eSLv09hwp9euA7GWwwDjXF3gIo5ZpbASrqZB4215ko4="
-    },
-    {
       "url": "https://repo1.maven.org/maven2/org/jline/jline-terminal-jni/3.29.0/jline-terminal-jni-3.29.0.jar",
       "sha256": "E/74vMDkeIyOGS3HbDN1hoPGv9uu9vZ7QUReuJhnc60="
     },
     {
       "url": "https://repo1.maven.org/maven2/org/jline/jline-terminal-jni/3.29.0/jline-terminal-jni-3.29.0.pom",
       "sha256": "Tb7CI2PS+hxOLIkhLyYmvDf41S1NxD6Nh993rGT/r6Q="
-    },
-    {
-      "url": "https://repo1.maven.org/maven2/org/jline/jline-parent/3.29.0/jline-parent-3.29.0.pom",
-      "sha256": "eSLv09hwp9euA7GWwwDjXF3gIo5ZpbASrqZB4215ko4="
     },
     {
       "url": "https://repo1.maven.org/maven2/org/scala-lang/scala-library/2.13.16/scala-library-2.13.16.jar",
@@ -114,10 +106,6 @@
     {
       "url": "https://repo1.maven.org/maven2/org/jline/jline-native/3.29.0/jline-native-3.29.0.pom",
       "sha256": "WCVUjHmpGbax2LfAkEvnKh3kPoSrVSWSPC+RJ5843IM="
-    },
-    {
-      "url": "https://repo1.maven.org/maven2/org/jline/jline-parent/3.29.0/jline-parent-3.29.0.pom",
-      "sha256": "eSLv09hwp9euA7GWwwDjXF3gIo5ZpbASrqZB4215ko4="
     }
   ],
   "libraryDependencies": [
