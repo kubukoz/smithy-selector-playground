@@ -28,11 +28,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1776379240,
-        "narHash": "sha256-fhmtoHCg7dJnVlk/U4p/of1oC237Xk5+ciZRmobar/M=",
+        "lastModified": 1776447111,
+        "narHash": "sha256-qWqha1eJJOqbnXbMIXuOqx37vhZhLrXbHeGrSV/zw0Y=",
         "owner": "scala-nix",
         "repo": "scala-cli-nix",
-        "rev": "a3f4e522bcc0ca2fd1b799b49ce6136d8f227367",
+        "rev": "aa1fc4151cca8f5373007a1a5b6352304e436098",
         "type": "github"
       },
       "original": {
