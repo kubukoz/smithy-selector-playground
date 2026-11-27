@@ -1,0 +1,11 @@
+pull_request_rules:
+- name: merge scala-steward's PRs
+  conditions:
+  - author=scala-steward
+  - or:
+    - body~=labels:.*early-semver-patch
+    - body~=labels:.*early-semver-minor
+  - status-success=Build and Test
+  - status-success=Validate Steward Config
+  actions:
+    merge: {}

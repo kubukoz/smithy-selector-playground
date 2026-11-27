@@ -7,7 +7,7 @@ on:
     branches: ["main"]
 
 concurrency:
-  group: "main"
+  group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
@@ -28,6 +28,20 @@ jobs:
           apps: scala-cli
 
       - run: scala-cli --power compile .
+
+  validate-steward:
+    name: Validate Steward Config
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: coursier/setup-action@v1
+        with:
+          jvm: temurin:1.17
+          apps: scala-steward
+
+      - run: scala-steward validate-repo-config .scala-steward.conf
 
   deploy:
     name: Deploy app

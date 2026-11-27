@@ -2,9 +2,15 @@ name: Update lockfile
 
 on:
   pull_request:
+  push:
+    branches: ["main"]
 
 jobs:
-  lock:
+  # Same-repo PRs: regenerate the lockfile and push it to the PR branch.
+  # Fork PRs (e.g. Scala Steward) get a read-only token and their branch doesn't
+  # exist here, so they're skipped and handled by the main job after merge.
+  lock-pr:
+    if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-latest
     permissions:
       contents: write # needed to push the updated lockfile
@@ -14,3 +20,34 @@ jobs:
           ref: ${{ github.head_ref }} # check out the PR branch, not the merge commit
 
       - uses: scala-nix/scala-cli-nix/.github/actions/lock@main
+
+  # main: catch up the lockfile after merges from forks (Scala Steward).
+  # Pushes made with GITHUB_TOKEN don't trigger new workflow runs, so this can't loop.
+  lock-main:
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # needed to push the updated lockfile
+    concurrency:
+      group: lock-main
+      cancel-in-progress: true
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: DeterminateSystems/nix-installer-action@main
+
+      - run: nix run github:scala-nix/scala-cli-nix -- lock
+
+      - name: Commit lockfile if changed
+        run: |
+          if git diff --quiet scala.lock.json; then
+            echo "scala.lock.json is up to date, nothing to commit."
+            exit 0
+          fi
+
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          git add scala.lock.json
+          git commit -m "chore: regenerate scala.lock.json"
+          git push origin HEAD:main
